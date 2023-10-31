@@ -10,16 +10,16 @@ Questions:
 Objectives:
 
 - Learn how to raise exceptions.
-- Understand how to follow PEP8 style for Python.
+- Understand how to follow the PEP8 style for Python.
 - Understand what docstrings are and why they are important.
-- Learn to write docstrings in numpy style.
+- Learn to write docstrings in NumPy style.
 ```
 
 ```{admonition} Prerequisites
 :class: info
 
 Before starting this lesson, you should first complete
-the Using Branches Exercise in Episode 2.
+the [Exercise - Using Branches](02-git.md#Exercise - Using Branches) from Introduction to Version Control using Git lesson.
 ```
 
 ## Editing a function in our package
@@ -52,7 +52,7 @@ These are found in `molssi_beter_practices/starting_material/data/pdb/`.
 We want to store these files in our `molecool` directory.
 Luckily, `cookiecutter` created a folder designed specifically for that purpose.
 The folder is in `molecool/data/`.
-This folder can contain any data useful for testing of the basic functionality of our code.
+This folder can contain any data useful for testing the basic functionality of our code.
 Be mindful that this folder is also downloaded when installing our package,
 so do not include data whose size is significant. 
 
@@ -106,7 +106,7 @@ array([[ 9.626,  6.787, 12.673],
 Hooray! It seems like this function works!
 This should come as no surprise since we are the authors of the function,
 and we know its internal structure.
-This is not necessarily true for someone editing our code and specially not true
+This is not necessarily true for someone editing our code and is especially not true
 for someone just using our code.
 There are instances where unwanted behavior occurs, even though the code executes
 (i.e. there are no syntax errors).
@@ -123,7 +123,7 @@ Take for example the division by zero. If we try to calculate
 ````
 
 
-We would get
+We would get:
 
 ````{tab-set-code} 
 
@@ -138,7 +138,7 @@ This type of feedback is much more helpful than just throwing an ugly `NaN`.
 This is called an *exception* error.
 There are several built-in exceptions, such as the "ZeroDivisionError".
 You can choose to raise exceptions yourself when you think a function should fail
-(instead of the function not failing, or running until it hits some other failure.)
+(instead of the function not failing, or running until it hits some other failure).
 
 Consider our function `write_xyz`.
 
@@ -168,7 +168,7 @@ The function will simply ignore the last coordinate.
 If `symbols` is the longer argument, we will not have enough `coordinates` and an error will occur.
 Neither of these is our intended behavior, but would occur without us knowing (some errors are silent)!
 
-Let's try this out. In a python interpreter, try the following:
+Let's try this out. In a Python interpreter, try the following:
 
 ````{tab-set-code} 
 
@@ -239,9 +239,9 @@ The built-in exceptions already include errors that are common while programming
 For example, our function requires explicit use of [numpy] arrays.
 Nevertheless, a user may be tempted to use a list of length 3 to describe the position of two atoms.
 We know that it is not possible to perform arithmetic between full lists.
-In this case we might use the exception type `TypeError`.
+In this case, we might use the exception type `TypeError`.
 
-Other types of common exceptions include undefined variables (`NameError`)
+Other types of common exceptions include undefined variables (`NameError`).
 and failed assertions that two numbers are the same (`AssertionError`).
 The latter will be particularly useful when we want to automate testing within our package. 
 
@@ -264,12 +264,12 @@ However, you should follow this convention when possible.
 >
 > If you spend a lot of time programming in Python, you will see references to PEPs a lot.
 > PEP stands for "Python Enhancement Proposal".
-> These are design documents which provide information about features.
+> These are design documents that provide information about features.
 > PEPs come from the Python community, meaning anyone can author a PEP (however, there is a strict review process).
 > PEPs are classified into three categories - standards, informational, or process.
 >
 > You can read more about PEPs in [Python's documentation](https://www.python.org/dev/peps/pep-0001/).
-> PEP1 outlines what a PEP is and how they work.
+> PEP1 outlines what a PEP is and how it works.
 {: .callout}
 
 PEP8 tells us several things about styling that will make our code easier to read.
@@ -278,7 +278,7 @@ Let's consider some of these and how they might change our function.
 ### Variable names
 PEP8 recommends that
 
-> Never use the characters 'l' (lowercase letter el), 'O' (uppercase letter oh), or 'I' (uppercase letter eye) as single character variable names.
+> Never use the characters 'l' (lowercase letter el), 'O' (uppercase letter oh), or 'I' (uppercase letter eye) as single-character variable names.
  
 > Function names should be lowercase, with words separated by underscores as necessary to improve readability.
 
@@ -286,7 +286,7 @@ Though not specifically referenced in PEP8,
 we also recommend making all variable names descriptive so that
 someone reading your code can easily understand what the variable is. 
 
-Consider a few variable we have defined in our function (`c`, `sym`, `c2`, `l`).
+Consider a few variables we have defined in our function (`c`, `sym`, `c2`, `l`).
 Is it clear what these are or mean? We can change them to be more descriptive and readable.
 
 ````{tab-set-code} 
@@ -316,7 +316,7 @@ For this rewrite of the function, we have made the following changes in variable
 - `l` ---> `line`
 - `c2` ---> `atom_coords`
 
-These variable names follow PEP8 convention and are much more descriptive and readable. 
+These variable names follow the PEP8 convention and are much more descriptive and readable. 
 
 ### Indentation
 
@@ -325,7 +325,7 @@ Our code meets these criteria.
 
 ### Whitespace
 
-> Always surround these binary operators with a single space on either side: assignment (=), augmented assignment (+=, -= etc.), comparisons (==, <, >, !=, <>, <=, >=, in, not in, is, is not), Booleans (and, or, not).
+> Always surround these binary operators with a single space on either side: assignment (=), augmented assignment (+=, -=, etc.), comparisons (==, <, >, !=, <>, <=, >=, in, not in, is, is not), Booleans (and, or, not).
 
 This means that every time we have an expression assigning a variable, it should be `variable = value` instead of `variable=value`.
 
@@ -359,7 +359,7 @@ def open_pdb(file_location):
 ````
 
 
-Now that we've written a new function in our project, we should commit our changes and push to GitHub.
+Now that we've written a new function in our project, we should commit our changes and push them to GitHub.
 
 ````{tab-set-code} 
 
@@ -377,7 +377,7 @@ git push origin main
 
 Below is the `calculate_distance` function that takes two points in 3D space
 and returns the distance between them. Even though it works just fine,
-it might hard for others to understand.
+it might be hard for others to understand.
 Take a couple of minutes to reformat this function in the `molecool/functions.py` module.
 
 ````{tab-set-code} 
@@ -392,7 +392,7 @@ def calculate_distance(rA, rB):
 `````{admonition} Solution
 :class: solution dropdown
 
-Here is a better formatted version of `calculate_distance`, which is easier to read and understand.
+Here is a better-formatted version of `calculate_distance`, which is easier to read and understand.
 
 ````{tab-set-code} 
 
@@ -408,7 +408,7 @@ def calculate_distance(rA, rB):
 `````
 ``````
 
-Now we've successfully styled function according to PEP8! However, if we compare what we've written above to the sample function, `canvas`, we notice that ours is a little different.
+Now we've successfully styled the function according to PEP8! However, if we compare what we've written above to the sample function, `canvas`, we notice that ours is a little different.
 
 Keeping your previous Python interpreter open, type the following:
 
@@ -512,7 +512,7 @@ Headings should be underlined with hyphens (`-----`).
 There are many options for sections, we will only cover the most relevant here.
 If you would like to see a full list, check out the documentation for [numpy style docstrings].
 
-##### 1. Short summary
+##### 1. Short Summary
 A one-line summary that does not use the variable name or the function name.
 In our `calculate_distance` function, this corresponds to the following.
 
@@ -552,11 +552,11 @@ rA, rB : np.ndarray
 
 Here, you can see that the parameter section begins with the section title ("Parameters"),
 followed by a line of hyphens ("----").
-On the next line, we have the argument names (`rA, rB`),
+In the next line, we have the argument names (`rA, rB`),
 then a colon (`:`) followed by the input type of the argument.
 This line says that the arguments `rA` and `rB` should be of type `np.ndarray`.
 The next line gives a more detailed description of the parameter.
-When the input parameters are of different type, or they aren't related to each other,
+When the input parameters are of different types, or they aren't related to each other,
 they should be written on separate lines.
 
 ##### 4. Returns
@@ -601,17 +601,17 @@ Examples
 ````
 
 
-It is important that your examples in docstrings are working Python.
+It is important that your examples in docstrings are working in Python.
 We will see in the `testing` lesson how we can run automatic tests on our docstrings,
 and in the `documentation` lesson, we will see how we can display examples in documentation to our users. 
 
-We have three lines of code for our example. In examples, lines of code begin with `>>>`.
+We have three lines of code for our example. For example, lines of code begin with `>>>`.
 The first two lines define numpy arrays that are used in our `calculate_distance` function.
 Note that `r1` and `r2` must be numpy arrays (as indicated by our `Parameters` section),
 or our example will not give valid Python code (our function would error if we ran it).
-On the last line, you give the output (with no `>>>` in front.)
+On the last line, you give the output (with no `>>>` in front).
 
-Now that we've written a function in our project, we should commit our changes and push to GitHub.
+Now that we've written a function in our project, we should commit our changes and push them to GitHub.
 
 ````{tab-set-code} 
 
@@ -698,21 +698,21 @@ Once you're done make sure to add, commit, and push your changes to GitHub.
 
 If you look at PEP8, you will see that it is quite long.
 While you should definitely read it if you spend a lot of time programming in Python,
-there are luckily tools which will help us make sure
-our code is following PEP8 convention or other styling guidelines.
+there are luckily tools that will help us make sure
+our code is following the PEP8 convention or other styling guidelines.
 There are auto-formatting tools such as `yapf` and `Black`,
 and static code "linters" such as `pylint` or `flake8`.
 
-Automatic code formatters will parse your python files and format them
+Automatic code formatters will parse your Python files and format them
 according to standards defined by that code formatter.
-It is usually a good idea to use a formatter (of your choice) when working on a python project.
+It is usually a good idea to use a formatter (of your choice) when working on a Python project.
 In particular, [Black](https://github.com/psf/black) has gained popularity lately. 
 
 We will use [Black](https://github.com/psf/black) in this workshop.
-Black is an auto-formatter which is almost entirely non-customizable,
+Black is an auto-formatter that is almost entirely non-customizable,
 ensuring all of your files will be uniform. 
 
-Install `black` using `pip`. In your terminal, type
+Install `black` using `pip`. In your terminal, type:
 
 ````{tab-set-code}
 ```{code-block} shell
@@ -741,7 +741,7 @@ However, it is important to choose a consistent style.
 This will make your code much cleaner and easier to read.
 
 Now that we've changed and formatted some functions in our project,
-we should commit our changes and push to GitHub.
+we should commit our changes and push them to GitHub.
 
 ````{tab-set-code} 
 
@@ -756,8 +756,8 @@ git push origin master
 There are other tools, such as [pylint](https://www.pylint.org/) and
 [flake8](https://flake8.pycqa.org/en/latest/) that are not automatic formatters,
 but will check your code for adherence to the PEP8 standard.
-Pylint, for example, will find your variables which are not `snake_case`,
-functions which do not have `docstrings`, simple stylistic changes, unused variables, etc.
+Pylint, for example, will find your variables that are not `snake_case`,
+functions that do not have `docstrings`, simple stylistic changes, unused variables, etc.
 Flake8 is a little less strict in general.
 We will try `flake8` out here.
 If you would like to try `flake8`, first install it.
