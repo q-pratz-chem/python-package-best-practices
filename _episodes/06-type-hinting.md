@@ -17,9 +17,9 @@ Objectives:
 Python does not inherently require or enforce the *types* of variables in code.
 Python instead works under a principle called `Duck Typing`.
 Duck Typing is derived from the phrase, "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck."
-Similarily, if the value assigned to a variable can be used when an integer is called for, the code largely is unconcerned if the variable is an integer or another type.
+Similarly, if the value assigned to a variable can be used when an integer is called for, the code largely is unconcerned if the variable is an integer or another type.
 
-Though Duck Typing allows for flexibility in the use of variables, and similarily functions which take and return values of arbitrary type, a number of issues can arise.
+Though Duck Typing allows for flexibility in the use of variables, and similarily functions that take and return values of arbitrary type, a number of issues can arise.
 
 Consider the `calculate_distance` function from `measure.py`:
 
@@ -54,9 +54,9 @@ def calculate_distance(rA, rB):
 ```
 ````
 
-What are the types of the inputs for this function?
+What are the types of inputs for this function?
 The docstring currently specifies that the parameters `rA` and `rB` are both `np.ndarray`.
-The code does not explicitly type the variables, however there is implicit typing, which is where duck typing comes into play.
+The code does not explicitly type the variables, however, there is implicit typing, which is where duck typing comes into play.
 Consider the operations that are applied to the variables `rA` and `rB`.
 First, `rB` is subtracted from `rA`.
 Any types that do not support the `-` operation will cause an error.
@@ -90,7 +90,7 @@ Since (as the author) we _know_ that the code will not behave as expected if the
 we should do more to help make sure the code is used and behaves as expected.
 
 ## Type Hinting
-Type hinting a function, and in fact any variable, can improve how easy it is to understand the needs and behaviors of a function.
+Type hinting a function, and in fact, any variable can improve how easy it is to understand the needs and behaviors of a function.
 It is important to note that type hints will not be enforced by Python.
 The benefits of type hinting are to support error checking at development time to help avoid errors at run time.
 Python makes it easy to specify a type hint for any variable.
@@ -108,7 +108,7 @@ list_of_ints: list[int]
 
 Type hints can include any type available where the code is written, including
  * Simple types available in all Python code: int, float, str, bool, list
- * User defined types
+ * User-defined types
  * Imported types
 
 Note that (since Python 3.9) the built-in container types support subscripting syntax.
@@ -144,7 +144,7 @@ def my_function(var1: int, var2: float) -> float:
     ...
 ```
 ````
-Lets apply type hinting to the `calculate_distance` function.
+Let's apply type hinting to the `calculate_distance` function.
 
 ## Exercise - Adding type annotations to `calculate_distance`
 
@@ -201,7 +201,7 @@ type checking in your editor or with a standalone tool.
 
 ## Type Checking in VS Code
 
-Enabling type checking through your IDE is a simple step to benefit from type hinting in python.
+Enabling type checking through your IDE is a simple step to benefit from type hinting in Python.
 Pylance is an optional dependency of the Python extension for VS Code, which means it is likely already installed and just needs to be activated.
 
 To activate Pylance, click the gear icon in the bottom left corner of VS Code and then select the "Settings" option.
@@ -215,7 +215,7 @@ Try and pass a set of integers into the function and you should now see a red un
 ## More
 
 For more complex or flexible typing, note that the abstract base classes in
-[collections.abc](https://docs.python.org/3/library/collections.abc.html) can be used as `Generic` types.
+[collections.abc](https://docs.python.org/3/library/collections.abc.html) can be used as a `Generic` type.
 The [typing](https://docs.python.org/3/library/typing.html) library includes a number of other useful types.
  * `typing.Union` specifies a set of different types that can be assigned to a variable. `Union[int, float]` indicates that either an `int` or a `float` is acceptable.
  * `typing.SupportsFloat` matches any value that is convertible to `float`.
