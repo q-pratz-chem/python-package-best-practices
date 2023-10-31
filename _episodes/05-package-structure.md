@@ -12,7 +12,7 @@ Questions:
 
 Objectives:
 
-* Break code into modules and subpackages based on functionality.
+* Break code into modules and sub-packages based on functionality.
 
 * Understand how the `__init__.py` file affects your Python package.
 
@@ -20,17 +20,17 @@ Objectives:
 
 As new features are implemented in codes, it is natural for new functions and objects to be added.
 In many projects, this often leads to a large number of functionalities defined within a single module.
-For small, single developer codes, this is not a major issue, but it can still make code difficult to work with.
+For small, single-developer codes, this is not a major issue, but it can still make code difficult to work with.
 With large or multi-developer codes, this can slow development progress to a crawl as it is difficult both to understand and work with the code.
 
 In this lesson, we will simulate a developing piece of software.
-We will start with a single python module containing all the methods we have developed,
+We will start with a single Python module containing all the methods we have developed,
 and convert it into a well-structured package.
 
 ## Package Structure
 Let's start by reviewing the package structure provided to us by the [CMS CookieCutter].
 We have a directory containing our project with a number of additional features.
-Under our package directory, `molecool`, we can see our current python module `functions.py`.
+Under our package directory, `molecool`, we can see our current Python module `functions.py`.
 For a more detailed explanation of the rest of the package structure,
 please review the [package setup] section of the lessons.
 
@@ -39,7 +39,7 @@ please review the [package setup] section of the lessons.
 ├── CODE_OF_CONDUCT.md              <- Code of Conduct for developers and users
 ├── LICENSE                         <- License file
 ├── MANIFEST.in                     <- Packaging information for pip
-├── README.md                       <- Description of project which GitHub will render
+├── README.md                       <- Description of the project which GitHub will render
 ├── molecool                        <- Basic Python Package import file
 │   ├── __init__.py                 <- Basic Python Package import file
 │   ├── functions.py                <- Starting package module
@@ -53,7 +53,7 @@ please review the [package setup] section of the lessons.
 │   ├── README.md
 │   ├── conda-envs                  <- Conda environments for testing
 │   │   └── test_env.yaml
-│   ├── legacy-miniconda-setup      <- Legacy Travis CI Helper, will likely be removed in later version
+│   ├── legacy-miniconda-setup      <- Legacy Travis CI Helper, will likely be removed in a later version
 │   │   └── before_install.sh
 │   └── scripts
 │       └── create_conda_env.py     <- OS agnostic Helper script to make conda environments based on simple flags
@@ -69,13 +69,13 @@ please review the [package setup] section of the lessons.
 │   ├── getting_started.rst
 │   ├── index.rst
 │   ├── make.bat
-│   └── requirements.yaml           <- Documenation building specific requirements. Usually a smaller set than the main program
+│   └── requirements.yaml           <- Documentation building specific requirements. Usually a smaller set than the main program
 ├── readthedocs.yml
 ├── pyproject.toml                  <- Generic Python build system configuration (PEP-517).
 ├── setup.cfg                       <- Near-master config file to make house INI-like settings for Coverage, Flake8, YAPF, etc.
-├── setup.py                        <- Your package's setup file for installing with additional options that can be set
+├── setup.py                        <- Your package's setup file for installation with additional options that can be set
 ├── .codecov.yml                    <- Codecov config to help reduce its verbosity to more reasonable levels
-├── .github                         <- GitHub hooks for user contribution, pull request guides and GitHub Actions CI
+├── .github                         <- GitHub hooks for user contribution, pull request guides, and GitHub Actions CI
 │   ├── CONTRIBUTING.md
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
@@ -147,7 +147,7 @@ def calculate_center_of_mass(symbols, coordinates):
 ````
 
 
-Right at the start we can see two dictionaries of atom data. Clearly these are related and should probably be grouped together.
+Right at the start we can see two dictionaries of atom data. Clearly, these are related and should probably be grouped together.
 Looking at the functions, we see two functions that handle opening files, `open_pdb` and `open_xyz`, and a function that writes a file, `write_xyz`.
 It may make sense to group these three together in a module based on input and output.
 
@@ -163,7 +163,7 @@ If we have any other data, related to atoms, used by many of our functions, addi
 
 ```{code-block} atom_data.py
 """
-Data used for the rest of the package.
+Data is used for the rest of the package.
 """
 
 atomic_weights = {
@@ -265,7 +265,7 @@ def calculate_angle(rA, rB, rC, degrees=False):
 
 
 ### Visualize Module
-Similarly, we have two functions that handle visualization of molecules.
+Similarly, we have two functions that handle the visualization of molecules.
 We will place them into a module called `visualize.py`.
 
 ````{tab-set-code} 
@@ -344,7 +344,7 @@ Functions for molecule analysis
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
     """
-    Build a list of bonds in a set of coordinates based on a distance criteria.
+    Build a list of bonds in a set of coordinates based on distance criteria.
 
     Parameters
     ----------
@@ -386,7 +386,7 @@ However, what we really have is two distinct groups of functions that are relate
 More specifically,
 we have two functions that handle the input and output of a `.xyz` file
 and another function that handles the input of a `.pdb`.
-Each group is handling input and output,
+Each group handles input and output,
 but are still somewhat unrelated because of their file type.
 Instead of making a single module,
 we are going to create a subpackage to handle i/o and place a module for each group within it.
@@ -484,8 +484,8 @@ Since these are currently small modules, it would not be a big deal to import al
 But, consider a large I/O suite containing a large number of file types and functionalities.
 It will quickly create inefficiencies to leave them in one module.
 
-Now that we've organized and changed the structure in our project,
-we should commit our changes and push to GitHub.
+Now that we've organized and changed the structure of our project,
+we should commit our changes and push them to GitHub.
 
 ````{tab-set-code} 
 
@@ -499,7 +499,7 @@ git push origin main
 ## Fixing Imports
 When we first copied the functions from the Jupyter Notebook into `functions.py`,
 we were able to import `molecool` package and access the functions within `functions.py`.
-After we extracted the functions from that file, we won't be able to import those functions in the same way.
+After we extract the functions from that file, we won't be able to import those functions in the same way.
 In fact, we won't be able to access them at all.
 Every time we restructure our code or create new folders we have to be careful and modify the `__init__.py` accordingly.
 Let us then add the new functions into the `__init__.py`.
@@ -530,7 +530,7 @@ In this way, we should be able to call each of the functions after importing our
 Even with the imports fixed, if you try to run some of these functions,
 you may find yourself with an `ImportError`.
 This is because the functions can only see the code that has been "loaded" into their module.
-Each set of functions now exist in the context of their module "namespace".
+Each set of functions now exists in the context of their module "namespace".
 
 If we look at our original `functions.py` module,
 we will see that we had a number of import statements at the top of the file:
@@ -547,7 +547,7 @@ import matplotlib.pyplot as plt
 
 These are modules that are needed by some functions.
 Now that we have moved the functions into separate modules,
-we need to add the `import` statements into each file where they are needed.
+we need to add the `import` statements to each file where they are needed.
 Let's start by looking at `measure.py`.
 Looking through the functions, we can see that each of them has a reference to `np`,
 which is what we imported `numpy` as in `functions.py`. 
@@ -600,7 +600,7 @@ The `draw_molecule` function uses the `atom_colors` dictionary.
 When all of our code was in a single module, we could simply reference the dictionary by name and use it.
 However, we have now moved `atom_colors` and `atomic_weights` into a separate module.
 In order to reference the dictionaries in `visualize.py`, we need to import them using an import statement.
-This is an intra-package import, meaning that we are importing modules from within our packages to other imports in our package (see intra package imports [here](https://docs.python.org/3/tutorial/modules.html))
+This is an intra-package import, meaning that we are importing modules from within our packages to other imports in our package (see intra-package imports [here](https://docs.python.org/3/tutorial/modules.html))
 
 ````{tab-set-code} 
 
@@ -623,7 +623,7 @@ import matplotlib.pyplot as plt
 ````
 
 
-In this case, the `.` is saying look within the package `matplotlib` and grab the subpackage (or module) `pyplot`.
+In this case, the `.` is saying to look within the package `matplotlib` and grab the subpackage (or module) `pyplot`.
 In our case, we are not using a name before the `.` so where is it looking?
 It is looking within the current package/directory, or in this case `molecool` for a module or package named `atom_data`, from which it will import the `atom_colors` dictionary.
 
@@ -638,7 +638,7 @@ Correct the missing import statements in the module.
 `````{admonition} Solution
 :class: solution dropdown
 
-The `build_bond_list` functions utilizes the `calculate_distance` function, which is now in the `measure` module, so we want to create a relative import from the `measure` module.
+The `build_bond_list` function utilizes the `calculate_distance` function, which is now in the `measure` module, so we want to create a relative import from the `measure` module.
 ````{tab-set-code} 
 
 ```{code-block} molecule.py
@@ -652,8 +652,8 @@ from .measure import calculate_distance
 ### Using `import *`
 
 We have moved all of our functions into modules and we've updated our `__init__.py` file.
-If you use a Python interpreter in a directory which is not directly above your project, you can see the consequences of this.
-We can use the `dir` functions to see what is available in a particular module or object:
+If you use a Python interpreter in a directory that is not directly above your project, you can see the consequences of this.
+We can use the `dir` function to see what is available in a particular module or object:
 
 ````{tab-set-code}
 ```{code-block} python
@@ -698,7 +698,7 @@ Right now this has come at the cost of slightly more complicated import statemen
 We can, of course, edit our `__init__.py` file to make this simpler.
 At this point, the way we actually do this import is going to be stylistic - how do you want people to interact with your package?
 
-The goal we are going for is to call an IO function using
+The goal we are going for is to call an IO function using,
 
 ````{tab-set-code} 
 
@@ -725,7 +725,7 @@ These lines are relative import statements to the functions within the `io` pack
 Think of them as pointers to the functions.
 When we look at the `io` package, it directs us to the location of the underlying functions,
 so we do not need to look within each submodule.
-This allows us to use the following `import` statement to our top level `__init__.py` to access the functions:
+This allows us to use the following `import` statement to our top-level `__init__.py` to access the functions:
 
 ````{tab-set-code} 
 
@@ -746,7 +746,7 @@ We can now call our I/O functions using our target syntax.
 
 
 If we wanted the I/O functions to mimic the imports from the rest of the modules,
-we could modify our top level `__init__.py` file to reflect that.
+we could modify our top-level `__init__.py` file to reflect that.
 
 ````{tab-set-code} 
 
@@ -791,7 +791,7 @@ git push origin main
 ```{admonition} Key Points
 :class: key
 
-- Your package should be broken up into modules and subpackages depending on the amount of code and functionality.
+- Your package should be broken up into modules and sub-packages depending on the amount of code and functionality.
 - You can use the `__init__.py` file to define what packages are imported with your package, and how the user interacts with it.
 ```
 
