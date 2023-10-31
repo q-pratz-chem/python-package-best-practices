@@ -8,7 +8,7 @@ Questions:
 
 Objectives:
 - Explain types of documentation.
-- Learn to write and documentation using the Sphinx package.
+- Learn to write and document using the Sphinx package.
 - Deploy documentation to the web using Read The Docs.
 ````
 
@@ -16,49 +16,49 @@ Objectives:
 This episode discusses documentation strategies. 
 In particular, we will focus on how to build documentation using Sphinx and host that documentation online using [Read The Docs].
 
-Documentation must be provided to allow for use, development, and maintenance of software. 
+Documentation must be provided to allow for the use, development, and maintenance of software. 
 Documentation is often overlooked by developers since it can be tedious and boring.
 However, writing good documentation is an extremely good habit to develop.
 
 The documentation typically involves several components:
 
- - What your project does and why it is useful
- - Build requirements and dependencies (if applicable)
- - How to compile/build/test/install
- - How to use the software (through the API or through inputs)
- - Some examples
- - Who maintains the project
+ - What does your project do and why it is useful?
+ - Build requirements and dependencies (if applicable).
+ - How to compile/build/test/install?
+ - How to use the software (through the API or through inputs)?
+ - Some examples.
+ - Who maintains the project?
 
 So far in our project, we have added things like installation and use instructions to our `README.md`, which is displayed on our GitHub repository. 
 We have also written in-code documentation in the form of comments and function doc strings. 
-These strategies work well for small projects, and may be all the documentation you need for many of your projects. 
+These strategies work well for small projects and may be all the documentation you need for many of your projects. 
 However, if you are preparing a software package to be widely used, you may want to make a website for people to find information about your package.
 
 ## Types of Documentation
 
-There are many types of documentation which you might find associated with a software project.
+There are many types of documentation that you might find associated with a software project.
 A smaller project may be fully documented in the README.
 However, larger libraries may have several documentation sets, each with a different audience.
 One example of this is the [NumPy library](https://numpy.org/doc/stable/).
 The NumPy documentation is divided by content intended for users, and documentation meant for contributors or developers.
 The NumPy documentation also has a [reference section](https://numpy.org/doc/stable/reference/) which outlines all the functions and objects in the library (also called API documentation).
 
-Not all libraries have documentation which is this extensive.
+Not all libraries have documentation that is this extensive.
 You will have to decide what is appropriate for your project.
 However, it is good to be aware of the different types of documentation you might see associated with a project.
 
-- **README documentation** - This is the documentation which is in the `README.md` file. 
+- **README documentation** - This is the documentation that is in the `README.md` file. 
 It is displayed on the GitHub page for your project. For small projects, this documentation might be sufficient. 
-The README documentation should contain a short summary of the project, information on installation and basic usage, and should link out to more complex documentation if you have it.  
+The README documentation should contain a short summary of the project, information on installation, and basic usage, and should link out to more complex documentation if you have it.  
 
-- **End-user documentation** - The end user documentation should explain the goal of your project and explain how to use it.
+- **End-user documentation** - The end-user documentation should explain the goal of your project and explain how to use it.
 You might choose to include tutorials or text explanations in this documentation.
 This type of documentation could be present on your `README.md`, or on an external documentation site.
 
 - **Developer documentation** - Developer documentation should explain how your project works and how others can contribute to the project.
 
 - **API documentation** - API documentation is the documentation of the modules and functions in your library. 
-This is the type of documentation which in-code docstrings are used to generate.
+This is the type of documentation that in-code docstrings are used to generate.
 
 ## Sphinx for complex modules
 
@@ -66,13 +66,13 @@ When you want to improve your documentation strategies for Python packages, use 
 Sphinx is a tool for creating documentation and was originally created for documentation of the Python programming language.
 
 With Sphinx and some extensions, you can write documentation giving instructions and examples of your software AND pull out the in-code documentation we have already written as docstrings to document your API.
-**Note** that only using Sphinx to pull out API documentation is not a best-practice and should not be considered full and complete documentation.
+**Note** that only using Sphinx to pull out API documentation is not a best practice and should not be considered full and complete documentation.
 When documenting your project, in general, it is ideal to have accompanying end-user documentation at least as well.
 
 The ability to pull out in-code docstrings as documentation is an advantage - you won't have to maintain documentation in more than one place. 
 Later, we will see how we can automatically generate our documentation every time we push to the repository.
 
-[Many projects you are familiar with][sphinx example] use Sphinx for documentation - including NumPy, Matplotlib, and Pytest. 
+[Many projects you are familiar with][sphinx example] use Sphinx for documentation - including NumPy, matplotlib, and pytest. 
 
 To use Sphinx, you will need to have Sphinx installed and some configuration files.
 CookieCutter has already set up files which we need to get started with Sphinx.
@@ -91,8 +91,8 @@ pip install sphinx sphinx_rtd_theme
 ````
 
 
-While we work with documentation, we will finally be looking at the third directory which CookieCutter created.
-(Remember that we've looked at the project directory, and the `devtools` directory.)
+While we work with documentation, we will finally be looking at the third directory that CookieCutter created.
+(Remember that we've looked at the project directory and the `devtools` directory.)
 The files which CookieCutter has set up for Sphinx are in the `docs` folder. 
 Navigate to that directory.
 
@@ -126,12 +126,12 @@ _static             conf.py             make.bat
 
 These are the files we will use to build our documentation.
 
-The important files for you to edit in this directory end with the extension `.rst`. 
+The important files for you to edit in this directory ending with the extension `.rst`. 
 These are `reStructuredText` files, and they are what Sphinx will use to build each page or section of your documentation. 
 We have three restructured text files here to begin (`index.rst`, `getting_started.rst`, `api.rst`).
-The included `rst` pages were generated by the CookieCutter as a starting point for you.
+The included `rst` pages were generated by CookieCutter as a starting point for you.
 
-When you build your documentation, the `index.rst` will be the index, or main page of your documentation. 
+When you build your documentation, the `index.rst` will be the index or main page of your documentation. 
 The other `rst` files are examples of pages you might want to have (from CookieCutter). 
 Any time you want to make a new page, you can create a file with an `.rst` extension.
 
@@ -145,7 +145,7 @@ make html
 ````
 
 
-This command tells Sphinx to generate your documentation as html pages. 
+This command tells Sphinx to generate your documentation as HTML pages. 
 With this command, we are building HTML files from the reStructuredText files.
 
 Now notice when you type `ls` some new directories have appeared.
@@ -179,10 +179,10 @@ Now, we will have the task of actually adding information about our project to o
 This part will require us to write! 
 
 When writing Sphinx documentation, you use an extended `reStructuredText (RST)` [syntax][rst syntax]. 
-This is similar to Markdown, but has notable differences.
+This is similar to Markdown but has notable differences.
 See this [reStructured Text Cheat Sheet] for info on reStructuredText.
 
-Let's start by adding a simple a description to your `index.rst` under the first heading.
+Let's start by adding a simple description to your `index.rst` under the first heading.
 
 ````{tab-set-code} 
 
@@ -232,12 +232,12 @@ Using the [reStructured Text Cheat Sheet], add some information to your Getting 
 
 1. Add a text description under "Getting Started".
 2. Create a subheading called "installation" which contains installation instructions.
-3. The "Installation" section should use a list for dependencies and a code block with the installation command.
+3. The "Installation" section should use a list of dependencies and a code block with the installation command.
 
 `````{admonition} Solution
 :class: solution dropdown
 
- Following the guidelines and using the cheat sheet may lead you to a page which looks like this:
+ Following the guidelines and using the cheat sheet may lead you to a page that looks like this:
 
  ````{tab-set-code} 
  ```{code-block} getting_started.rst
@@ -245,7 +245,7 @@ Using the [reStructured Text Cheat Sheet], add some information to your Getting 
 Getting Started
 ===============
 
-This page details how to get started with molecool. Molecool is a package which was developed for the MolSSI Best Practices workshop.
+This page details how to get started with molecool. Molecool is a package that was developed for the MolSSI Best Practices workshop.
 
 Installation
 ------------
@@ -285,7 +285,7 @@ Once installed, you can use the package. This example draws a benzene molecule f
 ## Sphinx Directives
 
 The thing that really gives Sphinx special abilities are **directives**. 
-Directives are extensions which can be used with your restructured text to add special sections, images, warnings, etc to your documentation, and are part of a package called [docutils], which Sphinx is built on top of.
+Directives are extensions that can be used with your restructured text to add special sections, images, warnings, etc to your documentation, and are part of a package called [docutils], which Sphinx is built on top of.
 You can see a general list of directives [here][rst directives], and a list of special Sphinx Directives [here][sphinx directives].
 
 In general, the syntax for a directive is (with appropriate options and syntax)
@@ -322,12 +322,12 @@ For our Python example,
     molecool.draw_molecule(benzene_coords, benzene_symbols, draw_bonds=benzene_bonds)
 ```
 
-The line `.. code-block:: python` is the line which starts the directive. 
+The line `.. code-block:: python` is the line that starts the directive. 
 Directives always start with two periods (`..`), followed by a space, then the directive name (`code-block` in this case), then two colons (`::`). 
 Next, you press enter and add any options for the directive. 
-What we want highlighted as code is indented below this directive line.
+What we want to be highlighted as code is indented below this directive line.
 
-Sphinx `code-block` directive supports many languages. 
+Sphinx's `code-block` directive supports many languages. 
 For example, we could add a C++ code block.
 
 ```rst
@@ -360,15 +360,15 @@ It is also on your main page.
 ````
 
 This directive has an example of directive options, namely `maxdepth` and `caption`. 
-You can think of these as arguments to a function. 
-We then have options for depth of the Table of Contents (what level of headers to show), as well as the "caption". 
+You can think of these as arguments for a function. 
+We then have options for the depth of the Table of Contents (what level of headers to show), as well as the "caption". 
 You can see other options for this directive under "Additional options" on the [documentation page][sphinx directives]. 
 
-After the settings for the TOC tree, you list the name of the pages you want to be included in this Table of Contents. 
+After the settings for the TOC tree, you list the names of the pages you want to be included in this Table of Contents. 
 Right now, we are including the 'Getting Started' page and the API page.
 
 Note that you add the __file name__ in the TOC Tree, but the title of the page is what shows up in the TOC.
-For example, for the `Getting Started` page, the page heading is 'Getting Started', but you list the file name without the extension is the TOC tree as `getting_started`.
+For example, for the `Getting Started` page, the page heading is 'Getting Started', but you list the file name without the extension in the TOC tree as `getting_started`.
 
 ### Exercise - Adding to the Table of Contents
 
@@ -384,7 +384,7 @@ What happens if you remove the page from the table of contents and rebuild the d
 :class: solution dropdown
 
 First, create a new file called `about.rst`. Next, create a header and
-write a short desciption in `about.rst`.
+write a short description in `about.rst`.
 ````{tab-set-code}
 
 ```{code-block} about.rst
@@ -464,16 +464,16 @@ If you add the `Notes` section of this docstring to your Sphinx documentation, t
 
 To use Sphinx to generate API documentation, you can use either [Spinx-AutoAPI]
 or [Sphinx-Autodoc]. 
-The cookiecutter comes bundled with Sphinx-Autodoc, so we will focus on that tool for this tutorial. 
+The CookieCutter comes bundled with Sphinx-Autodoc, so we will focus on that tool for this tutorial. 
 See the Note at the end of this section for instructions on building API documentation on using AutoAPI.
 
 AutoDoc will pull out and render your documentation strings so that they are viewable to the user. 
-This makes maintaining code documentation easier on you, as you will only need to maintain documentation for usage of functions in one place (the source code.)
+This makes maintaining code documentation easier on you, as you will only need to maintain documentation for the usage of functions in one place (the source code.)
 
-CookieCutter has already added a page which uses these tools. 
+CookieCutter has already added a page that uses these tools. 
 On your index page, click `API Documentation`, then click on the `canvas` function. 
 You will see the docstring written for the function. 
-If you click the green 'source' button to the right, you will be taken to a page which shows the source code for the function.
+If you click the green 'source' button to the right, you will be taken to a page that shows the source code for the function.
 
 Opening, the `api.rst` file, you should see the following.
 
@@ -591,7 +591,7 @@ napoleon_use_ivar = True
 
 You can then build your documentation to have your docstrings pulled out automatically.
 While this strategy is convenient, we consider it to be only a good first pass at creating documentation.
-Your documentation should always contain additional information on goals and usage of the project, in addition to API documentation.
+Your documentation should always contain additional information on the goals and usage of the project, in addition to API documentation.
 
 
 
@@ -600,16 +600,16 @@ Your documentation should always contain additional information on goals and usa
 
 Realistically, you probably don't want just a single page for API documentation.
 You could separate your documentation by purpose.
-For example, you could have separate pages explaining visualization, calculation, and/or measurement, with an autosummary table of contents for each page that has relevant functions.
+For example, you could have separate pages explaining visualization, calculation, and/or measurement, with an auto-summary table of contents for each page that has relevant functions.
 Many projects are structured this way.
 Now that you know how Python documentation is built, keep an eye out for documentation you like. 
-If you find documentation you like, take a look at their files to see how they structured their project!.
+If you find a documentation you like, take a look at their files to see how they structured their project!
 ```
 
 ## The `conf.py` file
 
 Now that we've worked with Sphinx, let's look a little closer at what's going on. 
-The file `conf.py` in your `docs` folder gives all the configuration setting we are using for Sphinx to build our documentation. 
+The file `conf.py` in your `docs` folder gives all the configuration settings we are using for Sphinx to build our documentation. 
 CookieCutter has added several extensions to Sphinx to make the documentation we've built.
 
 Open your `conf.py` file and find the `extensions` section.
@@ -644,7 +644,7 @@ napoleon_use_ivar = True
 
 
 CookieCutter has added a few extensions here which will allow us to pull docstrings from our Python modules (`sphinx.ext.autosummary`, `sphinx.ext.autodoc`), and another which we use because our docstrings are `NumPy` style (`sphinx.ext.napoleon`).
-The `mathjax` extension allows us to render latex into equations, and the `viewcode` extensions will add links to highlighted source code.
+The `mathjax` extension allows us to render latex into equations, and the `viewcode` extensions will add links to the highlighted source code.
 
 Previously, we have used the line `autosummary_generate = True` to allow us to pull auto summaries from our modules and functions.
 
@@ -656,14 +656,14 @@ With this service, you can enable the building of your documentation every time 
 
 Go to the [Read The Docs] website.
 Log in with your GitHub username and hook the repository to ReadTheDocs.
-This is done by clicking `Import a Project` button on your dashboard.
-Then on `Import a Repository` page click the `Import Manually` button and fill the form as following:
-1. Use `molecool-YOUR_GITHUB_USERNAME` in the `Name` field rather than just `molecool` to create unique URL for your Read The Docs documentation,
+This is done by clicking the `Import a Project` button on your dashboard.
+Then on the `Import a Repository` page click the `Import Manually` button and fill in the form as follows:
+1. Use `molecool-YOUR_GITHUB_USERNAME` in the `Name` field rather than just `molecool` to create a unique URL for your Read The Docs documentation,
 2. Fill the `Repository URL` with your molecool repository URL,
 3. Choose Git as your `Repository type`, and
 4. Type `main` as your `Default branch`.
 
-Next, trigger build by clicking the `Build version` on your Read The Docs project page.
+Next, trigger the build by clicking the `Build version` on your Read The Docs project page.
 
 Unfortunately, your documentation build will fail.
 This is because we need our dependencies installed on RTD.
@@ -720,7 +720,7 @@ Update your `README.md` and `setup.cfg` files with your new ReadTheDocs URL.
 - Some documentation is better than no documentation
 - Python packages are often documented using the Sphinx software. 
 - Sphinx lets you write documentation in restructured text and can convert
-you documentation to PDF or HTML.
-- Sphinx directives are used to add to documentation.
+your documentation to PDF or HTML.
+- Sphinx directives are used to add to the documentation.
 - You can deploy your Sphinx documentation online using ReadTheDocs.
 ````
